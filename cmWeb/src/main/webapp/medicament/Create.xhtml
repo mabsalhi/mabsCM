@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateMedicamentTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateMedicamentLabel_idMedicament}" for="idMedicament" />
+                    <h:inputText id="idMedicament" value="#{medicamentController.selected.idMedicament}" title="#{bundle.CreateMedicamentTitle_idMedicament}" required="true" requiredMessage="#{bundle.CreateMedicamentRequiredMessage_idMedicament}"/>
+                    <h:outputLabel value="#{bundle.CreateMedicamentLabel_designation}" for="designation" />
+                    <h:inputText id="designation" value="#{medicamentController.selected.designation}" title="#{bundle.CreateMedicamentTitle_designation}" />
+                    <h:outputLabel value="#{bundle.CreateMedicamentLabel_composition}" for="composition" />
+                    <h:inputText id="composition" value="#{medicamentController.selected.composition}" title="#{bundle.CreateMedicamentTitle_composition}" />
+                    <h:outputLabel value="#{bundle.CreateMedicamentLabel_forme}" for="forme" />
+                    <h:inputText id="forme" value="#{medicamentController.selected.forme}" title="#{bundle.CreateMedicamentTitle_forme}" />
+                    <h:outputLabel value="#{bundle.CreateMedicamentLabel_presentation}" for="presentation" />
+                    <h:inputText id="presentation" value="#{medicamentController.selected.presentation}" title="#{bundle.CreateMedicamentTitle_presentation}" />
+                    <h:outputLabel value="#{bundle.CreateMedicamentLabel_classeTherapeutique}" for="classeTherapeutique" />
+                    <h:inputText id="classeTherapeutique" value="#{medicamentController.selected.classeTherapeutique}" title="#{bundle.CreateMedicamentTitle_classeTherapeutique}" />
+                    <h:outputLabel value="#{bundle.CreateMedicamentLabel_indcation}" for="indcation" />
+                    <h:inputText id="indcation" value="#{medicamentController.selected.indcation}" title="#{bundle.CreateMedicamentTitle_indcation}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{medicamentController.create}" value="#{bundle.CreateMedicamentSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{medicamentController.prepareList}" value="#{bundle.CreateMedicamentShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateMedicamentIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

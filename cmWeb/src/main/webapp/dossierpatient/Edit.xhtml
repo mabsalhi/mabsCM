@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditDossierpatientTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditDossierpatientLabel_idDossier}" for="idDossier" />
+                    <h:inputText id="idDossier" value="#{dossierpatientController.selected.idDossier}" title="#{bundle.EditDossierpatientTitle_idDossier}" required="true" requiredMessage="#{bundle.EditDossierpatientRequiredMessage_idDossier}"/>
+                    <h:outputLabel value="#{bundle.EditDossierpatientLabel_premiereVisite}" for="premiereVisite" />
+                    <h:inputText id="premiereVisite" value="#{dossierpatientController.selected.premiereVisite}" title="#{bundle.EditDossierpatientTitle_premiereVisite}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditDossierpatientLabel_groupeSanguin}" for="groupeSanguin" />
+                    <h:inputText id="groupeSanguin" value="#{dossierpatientController.selected.groupeSanguin}" title="#{bundle.EditDossierpatientTitle_groupeSanguin}" />
+                    <h:outputLabel value="#{bundle.EditDossierpatientLabel_antecedant}" for="antecedant" />
+                    <h:inputText id="antecedant" value="#{dossierpatientController.selected.antecedant}" title="#{bundle.EditDossierpatientTitle_antecedant}" />
+                    <h:outputLabel value="#{bundle.EditDossierpatientLabel_mutialiste}" for="mutialiste" />
+                    <h:inputText id="mutialiste" value="#{dossierpatientController.selected.mutialiste}" title="#{bundle.EditDossierpatientTitle_mutialiste}" />
+                    <h:outputLabel value="#{bundle.EditDossierpatientLabel_divers}" for="divers" />
+                    <h:inputText id="divers" value="#{dossierpatientController.selected.divers}" title="#{bundle.EditDossierpatientTitle_divers}" />
+                    <h:outputLabel value="#{bundle.EditDossierpatientLabel_idPersonne}" for="idPersonne" />
+                    <h:selectOneMenu id="idPersonne" value="#{dossierpatientController.selected.idPersonne}" title="#{bundle.EditDossierpatientTitle_idPersonne}" required="true" requiredMessage="#{bundle.EditDossierpatientRequiredMessage_idPersonne}">
+                        <f:selectItems value="#{personneController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{dossierpatientController.update}" value="#{bundle.EditDossierpatientSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditDossierpatientViewLink}"/>
+                <br />
+                <h:commandLink action="#{dossierpatientController.prepareList}" value="#{bundle.EditDossierpatientShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditDossierpatientIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

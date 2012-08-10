@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListPrescriptionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListPrescriptionEmpty}" rendered="#{prescriptionController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{prescriptionController.items.rowCount > 0}">
+                    <h:outputText value="#{prescriptionController.pagination.pageFirstItem + 1}..#{prescriptionController.pagination.pageLastItem + 1}/#{prescriptionController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{prescriptionController.previous}" value="#{bundle.Previous} #{prescriptionController.pagination.pageSize}" rendered="#{prescriptionController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{prescriptionController.next}" value="#{bundle.Next} #{prescriptionController.pagination.pageSize}" rendered="#{prescriptionController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{prescriptionController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPrescriptionTitle_idPrescription}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idPrescription}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPrescriptionTitle_quantite}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.quantite}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPrescriptionTitle_detailPrise}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.detailPrise}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPrescriptionTitle_idVisite}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idVisite}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPrescriptionTitle_idMedicament}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idMedicament}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{prescriptionController.prepareView}" value="#{bundle.ListPrescriptionViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{prescriptionController.prepareEdit}" value="#{bundle.ListPrescriptionEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{prescriptionController.destroy}" value="#{bundle.ListPrescriptionDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{prescriptionController.prepareCreate}" value="#{bundle.ListPrescriptionCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListPrescriptionIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

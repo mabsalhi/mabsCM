@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListMedicamentTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListMedicamentEmpty}" rendered="#{medicamentController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{medicamentController.items.rowCount > 0}">
+                    <h:outputText value="#{medicamentController.pagination.pageFirstItem + 1}..#{medicamentController.pagination.pageLastItem + 1}/#{medicamentController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{medicamentController.previous}" value="#{bundle.Previous} #{medicamentController.pagination.pageSize}" rendered="#{medicamentController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{medicamentController.next}" value="#{bundle.Next} #{medicamentController.pagination.pageSize}" rendered="#{medicamentController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{medicamentController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMedicamentTitle_idMedicament}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idMedicament}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMedicamentTitle_designation}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.designation}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMedicamentTitle_composition}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.composition}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMedicamentTitle_forme}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.forme}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMedicamentTitle_presentation}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.presentation}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMedicamentTitle_classeTherapeutique}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.classeTherapeutique}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMedicamentTitle_indcation}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.indcation}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{medicamentController.prepareView}" value="#{bundle.ListMedicamentViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{medicamentController.prepareEdit}" value="#{bundle.ListMedicamentEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{medicamentController.destroy}" value="#{bundle.ListMedicamentDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{medicamentController.prepareCreate}" value="#{bundle.ListMedicamentCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListMedicamentIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

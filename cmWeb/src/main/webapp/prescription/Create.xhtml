@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePrescriptionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreatePrescriptionLabel_idPrescription}" for="idPrescription" />
+                    <h:inputText id="idPrescription" value="#{prescriptionController.selected.idPrescription}" title="#{bundle.CreatePrescriptionTitle_idPrescription}" required="true" requiredMessage="#{bundle.CreatePrescriptionRequiredMessage_idPrescription}"/>
+                    <h:outputLabel value="#{bundle.CreatePrescriptionLabel_quantite}" for="quantite" />
+                    <h:inputText id="quantite" value="#{prescriptionController.selected.quantite}" title="#{bundle.CreatePrescriptionTitle_quantite}" />
+                    <h:outputLabel value="#{bundle.CreatePrescriptionLabel_detailPrise}" for="detailPrise" />
+                    <h:inputText id="detailPrise" value="#{prescriptionController.selected.detailPrise}" title="#{bundle.CreatePrescriptionTitle_detailPrise}" />
+                    <h:outputLabel value="#{bundle.CreatePrescriptionLabel_idVisite}" for="idVisite" />
+                    <h:selectOneMenu id="idVisite" value="#{prescriptionController.selected.idVisite}" title="#{bundle.CreatePrescriptionTitle_idVisite}" required="true" requiredMessage="#{bundle.CreatePrescriptionRequiredMessage_idVisite}">
+                        <f:selectItems value="#{visiteController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreatePrescriptionLabel_idMedicament}" for="idMedicament" />
+                    <h:selectOneMenu id="idMedicament" value="#{prescriptionController.selected.idMedicament}" title="#{bundle.CreatePrescriptionTitle_idMedicament}" >
+                        <f:selectItems value="#{medicamentController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{prescriptionController.create}" value="#{bundle.CreatePrescriptionSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{prescriptionController.prepareList}" value="#{bundle.CreatePrescriptionShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreatePrescriptionIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

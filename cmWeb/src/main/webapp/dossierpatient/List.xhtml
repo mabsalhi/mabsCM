@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListDossierpatientTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListDossierpatientEmpty}" rendered="#{dossierpatientController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{dossierpatientController.items.rowCount > 0}">
+                    <h:outputText value="#{dossierpatientController.pagination.pageFirstItem + 1}..#{dossierpatientController.pagination.pageLastItem + 1}/#{dossierpatientController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{dossierpatientController.previous}" value="#{bundle.Previous} #{dossierpatientController.pagination.pageSize}" rendered="#{dossierpatientController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{dossierpatientController.next}" value="#{bundle.Next} #{dossierpatientController.pagination.pageSize}" rendered="#{dossierpatientController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{dossierpatientController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDossierpatientTitle_idDossier}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idDossier}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDossierpatientTitle_premiereVisite}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.premiereVisite}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDossierpatientTitle_groupeSanguin}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.groupeSanguin}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDossierpatientTitle_antecedant}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.antecedant}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDossierpatientTitle_mutialiste}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.mutialiste}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDossierpatientTitle_divers}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.divers}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDossierpatientTitle_idPersonne}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idPersonne}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{dossierpatientController.prepareView}" value="#{bundle.ListDossierpatientViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{dossierpatientController.prepareEdit}" value="#{bundle.ListDossierpatientEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{dossierpatientController.destroy}" value="#{bundle.ListDossierpatientDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{dossierpatientController.prepareCreate}" value="#{bundle.ListDossierpatientCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListDossierpatientIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

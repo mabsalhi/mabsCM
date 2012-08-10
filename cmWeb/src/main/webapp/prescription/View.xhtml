@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewPrescriptionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewPrescriptionLabel_idPrescription}"/>
+                    <h:outputText value="#{prescriptionController.selected.idPrescription}" title="#{bundle.ViewPrescriptionTitle_idPrescription}"/>
+                    <h:outputText value="#{bundle.ViewPrescriptionLabel_quantite}"/>
+                    <h:outputText value="#{prescriptionController.selected.quantite}" title="#{bundle.ViewPrescriptionTitle_quantite}"/>
+                    <h:outputText value="#{bundle.ViewPrescriptionLabel_detailPrise}"/>
+                    <h:outputText value="#{prescriptionController.selected.detailPrise}" title="#{bundle.ViewPrescriptionTitle_detailPrise}"/>
+                    <h:outputText value="#{bundle.ViewPrescriptionLabel_idVisite}"/>
+                    <h:outputText value="#{prescriptionController.selected.idVisite}" title="#{bundle.ViewPrescriptionTitle_idVisite}"/>
+                    <h:outputText value="#{bundle.ViewPrescriptionLabel_idMedicament}"/>
+                    <h:outputText value="#{prescriptionController.selected.idMedicament}" title="#{bundle.ViewPrescriptionTitle_idMedicament}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{prescriptionController.destroyAndView}" value="#{bundle.ViewPrescriptionDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewPrescriptionEditLink}"/>
+                <br />
+                <h:commandLink action="#{prescriptionController.prepareCreate}" value="#{bundle.ViewPrescriptionCreateLink}" />
+                <br />
+                <h:commandLink action="#{prescriptionController.prepareList}" value="#{bundle.ViewPrescriptionShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewPrescriptionIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

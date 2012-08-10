@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewVisiteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewVisiteLabel_idVisite}"/>
+                    <h:outputText value="#{visiteController.selected.idVisite}" title="#{bundle.ViewVisiteTitle_idVisite}"/>
+                    <h:outputText value="#{bundle.ViewVisiteLabel_dateVisite}"/>
+                    <h:outputText value="#{visiteController.selected.dateVisite}" title="#{bundle.ViewVisiteTitle_dateVisite}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewVisiteLabel_type}"/>
+                    <h:outputText value="#{visiteController.selected.type}" title="#{bundle.ViewVisiteTitle_type}"/>
+                    <h:outputText value="#{bundle.ViewVisiteLabel_motifs}"/>
+                    <h:outputText value="#{visiteController.selected.motifs}" title="#{bundle.ViewVisiteTitle_motifs}"/>
+                    <h:outputText value="#{bundle.ViewVisiteLabel_idDossier}"/>
+                    <h:outputText value="#{visiteController.selected.idDossier}" title="#{bundle.ViewVisiteTitle_idDossier}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{visiteController.destroyAndView}" value="#{bundle.ViewVisiteDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewVisiteEditLink}"/>
+                <br />
+                <h:commandLink action="#{visiteController.prepareCreate}" value="#{bundle.ViewVisiteCreateLink}" />
+                <br />
+                <h:commandLink action="#{visiteController.prepareList}" value="#{bundle.ViewVisiteShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewVisiteIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
