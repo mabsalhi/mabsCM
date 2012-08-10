@@ -26,6 +26,7 @@ public class PersonneController implements Serializable {
     private DataModel items = null;
     @EJB
     private com.mabscm.cmweb.ejb.PersonneFacade ejbFacade;
+    
     private PaginationHelper pagination;
     private int selectedItemIndex;
 

@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
@@ -14,6 +14,7 @@
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
             <h:form>
+                <!--
                 <h:panelGrid columns="2">
                     <h:outputLabel value="#{bundle.CreatePersonneLabel_idPersonne}" for="idPersonne" />
                     <h:inputText id="idPersonne" value="#{personneController.selected.idPersonne}" title="#{bundle.CreatePersonneTitle_idPersonne}" required="true" requiredMessage="#{bundle.CreatePersonneRequiredMessage_idPersonne}"/>
@@ -38,14 +39,91 @@
                     <h:outputLabel value="#{bundle.CreatePersonneLabel_photo}" for="photo" />
                     <h:inputTextarea rows="4" cols="30" id="photo" value="#{personneController.selected.photo}" title="#{bundle.CreatePersonneTitle_photo}" />
                 </h:panelGrid>
+                -->
                 <br />
-                <h:commandLink action="#{personneController.create}" value="#{bundle.CreatePersonneSaveLink}" />
+                
+                
+                <hr/>
+                <br/>
+                
+                <p:panelGrid style="margin-top:20px">  
+    <f:facet name="header">  
+        <p:row>  
+            <p:column colspan="7">1995-96 NBA Playoffs</p:column>  
+        </p:row>  
+        <p:row>  
+            <p:column colspan="2">
+                
+            </p:column>  
+            <p:column colspan="2">Conf. Finals</p:column>  
+            <p:column colspan="2">NBA Finals</p:column>  
+            <p:column>Champion</p:column>  
+        </p:row>  
+    </f:facet>  
+  
+    <p:row>  
+        <p:column style="font-weight: bold;">
+            <h:outputLabel value="#{bundle.CreatePersonneLabel_nom}" for="nom" />
+        </p:column>  
+        <p:column style="font-weight: bold;">
+            <h:inputText id="nom" value="#{personneController.selected.nom}" title="#{bundle.CreatePersonneTitle_nom}"
+                         required="true" requiredMessage="#{bundle.CreatePersonneRequiredMessage_nom}"/>
+        </p:column>
+    </p:row>  
+   <p:row>  
+        <p:column style="font-weight: bold;">
+            <h:outputLabel value="#{bundle.CreatePersonneLabel_prenom}" for="prenom" />
+        </p:column>  
+        <p:column style="font-weight: bold;">
+            <h:inputText id="prenom" value="#{personneController.selected.prenom}" title="#{bundle.CreatePersonneTitle_prenom}"
+                         required="true" requiredMessage="#{bundle.CreatePersonneRequiredMessage_prenom}"/>
+        </p:column>
+    </p:row>  <p:row>  
+        <p:column style="font-weight: bold;">
+            <h:outputLabel value="#{bundle.CreatePersonneLabel_cin}" for="cin" />
+        </p:column>  
+        <p:column style="font-weight: bold;">
+            <h:inputText id="cin" value="#{personneController.selected.cin}" title="#{bundle.CreatePersonneTitle_cin}"
+                         required="true" requiredMessage="#{bundle.CreatePersonneRequiredMessage_cin}"/>
+        </p:column>
+    </p:row>  <p:row>  
+        <p:column style="font-weight: bold;">
+            <h:outputLabel value="#{bundle.CreatePersonneLabel_dateNaissance}" for="dateNaissance" />
+        </p:column>  
+        <p:column style="font-weight: bold;">
+            <p:calendar value="#{personneController.selected.dateNaissance}" id="popupCal" />
+        </p:column>
+         
+        
+    </p:row>  <p:row>  
+        <p:column style="font-weight: bold;">
+            <h:outputLabel value="#{bundle.CreatePersonneLabel_adresse}" for="adresse" />
+        </p:column>  
+        <p:column style="font-weight: bold;">
+            <p:inputTextarea id="adresse" value="#{personneController.selected.adresse}" title="#{bundle.CreatePersonneTitle_adresse}"
+                         required="false" />
+            
+        </p:column>
+        
+    </p:row>  <p:row>  
+        <p:column style="font-weight: bold;">
+            <h:outputLabel value="#{bundle.CreatePersonneLabel_sexe}" for="sexe" />
+        </p:column>  
+        <p:column style="font-weight: bold;">
+            <h:inputText id="sexe" value="#{personneController.selected.sexe}" title="#{bundle.CreatePersonneTitle_sexe}"
+                         required="false" requiredMessage="#{bundle.CreatePersonneRequiredMessage_sexe}"/>
+        </p:column>
+    </p:row>  
+</p:panelGrid>  
+                
+              <h:commandLink action="#{personneController.create}" value="#{bundle.CreatePersonneSaveLink}" />
                 <br />
                 <br />
                 <h:commandLink action="#{personneController.prepareList}" value="#{bundle.CreatePersonneShowAllLink}" immediate="true"/>
                 <br />
                 <br />
-                <h:link outcome="/index" value="#{bundle.CreatePersonneIndexLink}"/>
+                <h:link outcome="/index" value="#{bundle.CreatePersonneIndexLink}"/>  
+                
             </h:form>
         </ui:define>
     </ui:composition>

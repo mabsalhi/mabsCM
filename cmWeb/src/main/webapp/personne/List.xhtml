@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
@@ -99,6 +99,66 @@
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{bundle.ListPersonneIndexLink}"/>
+
+                <hr/>
+                <br/>
+
+                <p:dataTable id="dataTable" var="item" value="#{personneController.items}"  
+                             paginator="true" rows="10"  
+                             paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"  
+                             rowsPerPageTemplate="5,10,15">  
+                    <f:facet name="header">  
+                        Ajax Pagination  
+                    </f:facet>  
+
+                    <p:column sortBy="#{item.cin}">  
+                        <f:facet name="header">  
+                            <h:outputText value="CIN" />  
+                        </f:facet>  
+                        <h:outputText value="#{item.cin}" />  
+                    </p:column>  
+
+                    <p:column sortBy="#{item.nom}">  
+                        <f:facet name="header">  
+                            <h:outputText value="Nom" />  
+                        </f:facet>  
+                        <h:outputText value="#{item.nom}" />  
+                    </p:column>  
+
+                    <p:column sortBy="#{item.prenom}">  
+                        <f:facet name="header">  
+                            <h:outputText value="Prenom" />  
+                        </f:facet>  
+                        <h:outputText value="#{item.prenom}" />  
+                    </p:column>  
+
+                    <p:column sortBy="#{item.dateNaissance}">  
+                        <f:facet name="header">  
+                            <h:outputText value="Date de Naissance" />  
+                        </f:facet>  
+                        <h:outputText value="#{item.dateNaissance}" />  
+                    </p:column>  
+                    <p:column>  
+                        <f:facet name="header">  
+                            <h:outputText value="Adresse" />  
+                        </f:facet>  
+                        <h:outputText value="#{item.adresse}" />  
+                    </p:column>  
+                    <p:column>  
+                        <f:facet name="header">  
+                            <h:outputText value="Numero de Telephonne" />  
+                        </f:facet>  
+                        <h:outputText value="#{item.numTelephonne}" />  
+                    </p:column>  
+                    <p:column sortBy="#{item.sexe}">  
+                        <f:facet name="header">  
+                            <h:outputText value="Sexe" />  
+                        </f:facet>  
+                        <h:outputText value="#{item.sexe}" />  
+                    </p:column>  
+                </p:dataTable>  
+
+
             </h:form>
         </ui:define>
     </ui:composition>
