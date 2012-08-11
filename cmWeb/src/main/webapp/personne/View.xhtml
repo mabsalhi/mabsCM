@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
@@ -51,6 +51,122 @@
                 <br />
                 <h:link outcome="/index" value="#{bundle.ViewPersonneIndexLink}"/>
 
+                <hr/>
+                
+                
+                  <p:growl id="growl" sticky="true" showDetail="true"/>   
+                
+                  <p:wizard widgetVar="wiz" flowListener="#{personneController.onFlowProcess}">  
+      
+        <p:tab id="personal" title="Personal">  
+  
+            <p:panel header="Personal Details">  
+              
+                <h:messages errorClass="error"/>  
+                  
+                <h:panelGrid columns="2" columnClasses="label, value" styleClass="grid">  
+                    <h:outputText value="Firstname: *" />  
+                    <p:inputText required="true" label="Firstname"  
+                                 value="#{personneController.selected.nom}" />  
+                      
+                    <h:outputText value="Lastname: *" />  
+                    <p:inputText required="true" label="Lastname"  
+                                 value="#{personneController.selected.prenom}" />  
+                      
+                    <h:outputText value="Age: " />  
+                    <p:inputText value="#{personneController.selected.cin}" />  
+                      
+                    <h:outputText value="Skip to last: " />  
+                    <h:selectBooleanCheckbox value="#{personneController.skip}" />  
+                </h:panelGrid>  
+            </p:panel>  
+        </p:tab>  
+              
+        <p:tab id="address" title="Address">  
+            <p:panel header="Adress Details">  
+              
+                <h:messages errorClass="error"/>  
+                  
+                <h:panelGrid columns="2" columnClasses="label, value">  
+                    <h:outputText value="Street: " />  
+                    <p:inputText value="#{personneController.selected.adresse}" />  
+                      
+                    <h:outputText value="Date de Naissance: " />  
+                    
+                    <h:outputText value="Ville : " />  
+                    <p:inputText value="#{personneController.selected.ville}" />  
+                      
+                    <h:outputText value="Skip to last: " />  
+                    <h:selectBooleanCheckbox value="#{userWizard.skip}" />  
+                </h:panelGrid>  
+            </p:panel>  
+        </p:tab>  
+              
+        <p:tab id="contact" title="Contact">  
+            <p:panel header="Contact Information">  
+                  
+                <h:messages errorClass="error"/>  
+              
+                <h:panelGrid columns="2" columnClasses="label, value">
+                      
+                    <h:outputText value="Numero de telephonne " />  
+                    <p:inputText value="#{personneController.selected.numTelephonne}"/>  
+                      
+                    <h:outputText value="Photo: " />  
+                    <p:inputText value="#{userWizard.user.info}"/>  
+                </h:panelGrid>  
+            </p:panel>  
+        </p:tab>  
+              
+        <p:tab id="confirm" title="Confirmation">  
+            <p:panel header="Confirmation">  
+              
+                <h:panelGrid id="confirmation" columns="6">  
+                    <h:outputText value="Firstname: " />  
+                    <h:outputText styleClass="outputLabel"  
+                                value="#{personneController.selected.nom}" />  
+                      
+                    <h:outputText value="Lastname: " />  
+                    <h:outputText  styleClass="outputLabel"  
+                                value="#{personneController.selected.prenom}"/>  
+                      
+                    <h:outputText value="Age: " />  
+                    <h:outputText styleClass="outputLabel"  
+                                value="#{personneController.selected.cin}" />>  
+                      
+                    <h:outputText value="Street: " />  
+                    <h:outputText styleClass="outputLabel"  
+                                  value="#{personneController.selected.numTelephonne}" />  
+                      
+                    <h:outputText value="Postal Code: " />  
+                    <h:outputText styleClass="outputLabel"  
+                                value="#{personneController.selected.dateNaissance}" />  
+                      
+                    <h:outputText value="City: " />  
+                    <h:outputText styleClass="outputLabel"  
+                                  value="#{personneController.selected.adresse}" />  
+                      
+                    <h:outputText value="Email: " />  
+                    <h:outputText styleClass="outputLabel"  
+                                  value="#{personneController.selected.numTelephonne}" />  
+                      
+                    <h:outputText value="Phone " />  
+                    <h:outputText styleClass="outputLabel"  
+                                  value="#{personneController.selected.sexe}"/>  
+                      
+                    <h:outputText />  
+                    <h:outputText />  
+                </h:panelGrid>  
+                  
+                <p:commandButton value="Submit" update="growl"   
+                                 actionListener="#{personneController.prepareCreate()}"/>  
+              
+            </p:panel>  
+        </p:tab>  
+          
+    </p:wizard>  
+                
+                
             </h:form>
         </ui:define>
     </ui:composition>

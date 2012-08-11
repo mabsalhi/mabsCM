@@ -7,6 +7,7 @@ import com.mabscm.cmweb.ejb.PersonneFacade;
 
 import java.io.Serializable;
 import java.util.ResourceBundle;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -17,6 +18,7 @@ import javax.faces.convert.FacesConverter;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
+import org.primefaces.event.FlowEvent;
 
 @ManagedBean(name = "personneController")
 @SessionScoped
@@ -26,7 +28,8 @@ public class PersonneController implements Serializable {
     private DataModel items = null;
     @EJB
     private com.mabscm.cmweb.ejb.PersonneFacade ejbFacade;
-    
+    private static Logger logger = Logger.getLogger(PersonneController.class.getName());
+    private boolean skip;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 
@@ -224,4 +227,28 @@ public class PersonneController implements Serializable {
             }
         }
     }
+
+    public boolean isSkip() {
+        return skip;
+    }
+
+    public void setSkip(boolean skip) {
+        this.skip = skip;
+    }
+    
+    
+    
+    public String onFlowProcess(FlowEvent event) {  
+        logger.info("Current wizard step:" + event.getOldStep());  
+        logger.info("Next step:" + event.getNewStep());  
+          
+        if(skip) {  
+            skip = false;   //reset in case user goes back  
+            return "confirm";  
+        }  
+        else {  
+            return event.getNewStep();  
+        }  
+    }  
+    
 }
