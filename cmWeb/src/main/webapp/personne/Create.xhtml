@@ -39,91 +39,214 @@
                     <h:outputLabel value="#{bundle.CreatePersonneLabel_photo}" for="photo" />
                     <h:inputTextarea rows="4" cols="30" id="photo" value="#{personneController.selected.photo}" title="#{bundle.CreatePersonneTitle_photo}" />
                 </h:panelGrid>
-                -->
+               
                 <br />
-                
-                
+
+
                 <hr/>
                 <br/>
-                
+
                 <p:panelGrid style="margin-top:20px">  
-    <f:facet name="header">  
-        <p:row>  
-            <p:column colspan="7">1995-96 NBA Playoffs</p:column>  
-        </p:row>  
-        <p:row>  
-            <p:column colspan="2">
-                
-            </p:column>  
-            <p:column colspan="2">Conf. Finals</p:column>  
-            <p:column colspan="2">NBA Finals</p:column>  
-            <p:column>Champion</p:column>  
-        </p:row>  
-    </f:facet>  
-  
-    <p:row>  
-        <p:column style="font-weight: bold;">
-            <h:outputLabel value="#{bundle.CreatePersonneLabel_nom}" for="nom" />
-        </p:column>  
-        <p:column style="font-weight: bold;">
-            <h:inputText id="nom" value="#{personneController.selected.nom}" title="#{bundle.CreatePersonneTitle_nom}"
-                         required="true" requiredMessage="#{bundle.CreatePersonneRequiredMessage_nom}"/>
-        </p:column>
-    </p:row>  
-   <p:row>  
-        <p:column style="font-weight: bold;">
-            <h:outputLabel value="#{bundle.CreatePersonneLabel_prenom}" for="prenom" />
-        </p:column>  
-        <p:column style="font-weight: bold;">
-            <h:inputText id="prenom" value="#{personneController.selected.prenom}" title="#{bundle.CreatePersonneTitle_prenom}"
-                         required="true" requiredMessage="#{bundle.CreatePersonneRequiredMessage_prenom}"/>
-        </p:column>
-    </p:row>  <p:row>  
-        <p:column style="font-weight: bold;">
-            <h:outputLabel value="#{bundle.CreatePersonneLabel_cin}" for="cin" />
-        </p:column>  
-        <p:column style="font-weight: bold;">
-            <h:inputText id="cin" value="#{personneController.selected.cin}" title="#{bundle.CreatePersonneTitle_cin}"
-                         required="true" requiredMessage="#{bundle.CreatePersonneRequiredMessage_cin}"/>
-        </p:column>
-    </p:row>  <p:row>  
-        <p:column style="font-weight: bold;">
-            <h:outputLabel value="#{bundle.CreatePersonneLabel_dateNaissance}" for="dateNaissance" />
-        </p:column>  
-        <p:column style="font-weight: bold;">
-            <p:calendar value="#{personneController.selected.dateNaissance}" id="popupCal" />
-        </p:column>
-         
-        
-    </p:row>  <p:row>  
-        <p:column style="font-weight: bold;">
-            <h:outputLabel value="#{bundle.CreatePersonneLabel_adresse}" for="adresse" />
-        </p:column>  
-        <p:column style="font-weight: bold;">
-            <p:inputTextarea id="adresse" value="#{personneController.selected.adresse}" title="#{bundle.CreatePersonneTitle_adresse}"
-                         required="false" />
-            
-        </p:column>
-        
-    </p:row>  <p:row>  
-        <p:column style="font-weight: bold;">
-            <h:outputLabel value="#{bundle.CreatePersonneLabel_sexe}" for="sexe" />
-        </p:column>  
-        <p:column style="font-weight: bold;">
-            <h:inputText id="sexe" value="#{personneController.selected.sexe}" title="#{bundle.CreatePersonneTitle_sexe}"
-                         required="false" requiredMessage="#{bundle.CreatePersonneRequiredMessage_sexe}"/>
-        </p:column>
-    </p:row>  
-</p:panelGrid>  
-                
-              <h:commandLink action="#{personneController.create}" value="#{bundle.CreatePersonneSaveLink}" />
+                    <f:facet name="header">  
+                        <p:row>  
+                            <p:column colspan="7">1995-96 NBA Playoffs</p:column>  
+                        </p:row>  
+                        <p:row>  
+                            <p:column colspan="2">
+
+                            </p:column>  
+                            <p:column colspan="2">Conf. Finals</p:column>  
+                            <p:column colspan="2">NBA Finals</p:column>  
+                            <p:column>Champion</p:column>  
+                        </p:row>  
+                    </f:facet>  
+
+                    <p:row>  
+                        <p:column style="font-weight: bold;">
+                            <h:outputLabel value="#{bundle.CreatePersonneLabel_nom}" for="nom" />
+                        </p:column>  
+                        <p:column style="font-weight: bold;">
+                            <h:inputText id="nom" value="#{personneController.selected.nom}" title="#{bundle.CreatePersonneTitle_nom}"
+                                         required="true" requiredMessage="#{bundle.CreatePersonneRequiredMessage_nom}"/>
+                        </p:column>
+                    </p:row>  
+                    <p:row>  
+                        <p:column style="font-weight: bold;">
+                            <h:outputLabel value="#{bundle.CreatePersonneLabel_prenom}" for="prenom" />
+                        </p:column>  
+                        <p:column style="font-weight: bold;">
+                            <h:inputText id="prenom" value="#{personneController.selected.prenom}" title="#{bundle.CreatePersonneTitle_prenom}"
+                                         required="true" requiredMessage="#{bundle.CreatePersonneRequiredMessage_prenom}"/>
+                        </p:column>
+                    </p:row>  <p:row>  
+                        <p:column style="font-weight: bold;">
+                            <h:outputLabel value="#{bundle.CreatePersonneLabel_cin}" for="cin" />
+                        </p:column>  
+                        <p:column style="font-weight: bold;">
+                            <h:inputText id="cin" value="#{personneController.selected.cin}" title="#{bundle.CreatePersonneTitle_cin}"
+                                         required="true" requiredMessage="#{bundle.CreatePersonneRequiredMessage_cin}"/>
+                        </p:column>
+                    </p:row>  <p:row>  
+                        <p:column style="font-weight: bold;">
+                            <h:outputLabel value="#{bundle.CreatePersonneLabel_dateNaissance}" for="dateNaissance" />
+                        </p:column>  
+                        <p:column style="font-weight: bold;">
+                            <p:calendar value="#{personneController.selected.dateNaissance}" id="popupCal" />
+                        </p:column>
+
+
+                    </p:row>  <p:row>  
+                        <p:column style="font-weight: bold;">
+                            <h:outputLabel value="#{bundle.CreatePersonneLabel_adresse}" for="adresse" />
+                        </p:column>  
+                        <p:column style="font-weight: bold;">
+                            <p:inputTextarea id="adresse" value="#{personneController.selected.adresse}" title="#{bundle.CreatePersonneTitle_adresse}"
+                                             required="false" />
+
+                        </p:column>
+
+                    </p:row>  <p:row>  
+                        <p:column style="font-weight: bold;">
+                            <h:outputLabel value="#{bundle.CreatePersonneLabel_sexe}" for="sexe" />
+                        </p:column>  
+                        <p:column style="font-weight: bold;">
+                            <h:inputText id="sexe" value="#{personneController.selected.sexe}" title="#{bundle.CreatePersonneTitle_sexe}"
+                                         required="false" requiredMessage="#{bundle.CreatePersonneRequiredMessage_sexe}"/>
+                        </p:column>
+                    </p:row>  
+                </p:panelGrid>  
+
+                -->
+                <hr/>
+
+                <p:growl id="growl" sticky="true" showDetail="true"/>   
+
+                <p:wizard widgetVar="wiz" flowListener="#{personneController.onFlowProcess}">  
+
+                    <p:tab id="personal" title="info Personnel">  
+
+                        <p:panel header="details Personnel">  
+
+                            <h:messages errorClass="error"/>  
+
+                            <h:panelGrid columns="2" columnClasses="label, value" styleClass="grid">  
+                                <h:outputText value="Nom: *" />  
+                                <p:inputText required="true" label="nom"  
+                                             value="#{personneController.selected.nom}" />  
+
+                                <h:outputText value="Prenom : *" />  
+                                <p:inputText required="true" label="prenom"  
+                                             value="#{personneController.selected.prenom}" />  
+
+                                <h:outputText value="CIN : " />  
+                                <p:inputText value="#{personneController.selected.cin}" />  
+
+                                <h:outputText value="Date de Naissance : " />
+                                <p:calendar value="#{personneController.selected.dateNaissance}" id="popupCal" />
+
+                                <h:outputText value="Sexe: " />  
+                                <p:selectOneRadio id="options" value="#{personneController.selected.sexe}">  
+                                    <f:selectItem itemLabel="femelle" itemValue="1" />  
+                                    <f:selectItem itemLabel="Male" itemValue="0" />  
+                                </p:selectOneRadio>  
+                                <h:outputText value="Passer a la dernniere etape : " />  
+                                <h:selectBooleanCheckbox value="#{personneController.skip}" />  
+                            </h:panelGrid>  
+                        </p:panel>  
+                    </p:tab>  
+
+                    <p:tab id="address" title="Addresse">  
+                        <p:panel header="details de l'adresse">  
+
+                            <h:messages errorClass="error"/>  
+
+                            <h:panelGrid columns="2" columnClasses="label, value">  
+                                <h:outputText value="Adresse: " />  
+                                <p:inputTextarea value="#{personneController.selected.adresse}" />
+
+                                <h:outputText value="Ville : " />  
+                                <p:inputText value="#{personneController.selected.ville}" />  
+
+                                <h:outputText value="Passer a la dernniere etape : " />  
+                                <h:selectBooleanCheckbox value="#{personneController.skip}" />   
+                            </h:panelGrid>  
+                        </p:panel>  
+                    </p:tab>  
+
+                    <p:tab id="contact" title="Contact">  
+                        <p:panel header="Information pour contact">  
+
+                            <h:messages errorClass="error"/>  
+
+                            <h:panelGrid columns="2" columnClasses="label, value">
+
+                                <h:outputText value="Numero de telephonne " />  
+                                <p:inputText value="#{personneController.selected.numTelephonne}"/>  
+
+                                <h:outputText value="Photo: " />  
+                                  
+                            </h:panelGrid>  
+                        </p:panel>  
+                    </p:tab>  
+
+                    <p:tab id="confirm" title="Confirmation">  
+                        <p:panel header="Confirmation">  
+
+                            <h:panelGrid id="confirmation" columns="6">  
+                                <h:outputText value="Firstname: " />  
+                                <h:outputText styleClass="outputLabel"  
+                                              value="#{personneController.selected.nom}" />  
+
+                                <h:outputText value="Lastname: " />  
+                                <h:outputText  styleClass="outputLabel"  
+                                               value="#{personneController.selected.prenom}"/>  
+
+                                <h:outputText value="Age: " />  
+                                <h:outputText styleClass="outputLabel"  
+                                              value="#{personneController.selected.cin}" />>  
+
+                                <h:outputText value="Street: " />  
+                                <h:outputText styleClass="outputLabel"  
+                                              value="#{personneController.selected.numTelephonne}" />  
+
+                                <h:outputText value="Postal Code: " />  
+                                <h:outputText styleClass="outputLabel"  
+                                              value="#{personneController.selected.dateNaissance}" />  
+
+                                <h:outputText value="City: " />  
+                                <h:outputText styleClass="outputLabel"  
+                                              value="#{personneController.selected.adresse}" />  
+
+                                <h:outputText value="Email: " />  
+                                <h:outputText styleClass="outputLabel"  
+                                              value="#{personneController.selected.numTelephonne}" />  
+
+                                <h:outputText value="Phone " />  
+                                <h:outputText styleClass="outputLabel"  
+                                              value="#{personneController.selected.sexe}"/>  
+
+                                <h:outputText />  
+                                <h:outputText />  
+                            </h:panelGrid>  
+
+                            <p:commandButton value="Submit" update="growl"   
+                                             actionListener="#{personneController.create}"/>  
+
+                        </p:panel>  
+                    </p:tab>  
+
+                </p:wizard>  
+
+
+
+                <h:commandLink action="#{personneController.create}" value="#{bundle.CreatePersonneSaveLink}" />
                 <br />
                 <br />
                 <h:commandLink action="#{personneController.prepareList}" value="#{bundle.CreatePersonneShowAllLink}" immediate="true"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{bundle.CreatePersonneIndexLink}"/>  
-                
+
             </h:form>
         </ui:define>
     </ui:composition>
